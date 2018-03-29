@@ -1,0 +1,155 @@
+{
+	"info": {
+		"_postman_id": "f3518f9d-19a8-40f4-a901-4a999158ed1c",
+		"name": "digidb-camunda-rest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Model Deployment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "deployment-name",
+							"value": "model-deployment",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "enable-duplicate-filtering",
+							"value": "true",
+							"type": "text"
+						},
+						{
+							"key": "deploy-changed-only",
+							"value": "true",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "file",
+							"description": ""
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/rest/deployment/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"deployment",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Process Start",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"variables\":{\r\n      \"someData\":{\r\n         \"value\":\"someValue\",\r\n         \"type\":\"String\"\r\n      }\r\n   },\r\n   \"businessKey\":\"12345\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/rest/process-definition/key/{process-id}/start",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"process-definition",
+						"key",
+						"{process-id}",
+						"start"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Process Submit Form",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"variables\":{\r\n      \"someData\":{\r\n         \"value\":\"someValue\",\r\n         \"type\":\"String\"\r\n      }\r\n   },\r\n   \"businessKey\":\"12345\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/rest/process-definition/key/{process-id}/submit-form",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"process-definition",
+						"key",
+						"{process-id}",
+						"submit-form"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send Message with Business Key",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"messageName\" : \"Message_ABC\",\r\n    \"businessKey\" : \"12345\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/rest/message",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"message"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
