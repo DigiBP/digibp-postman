@@ -8,14 +8,6 @@ var execution = new class Execution {
         this.data = new Map();
     }
 
-    getVariable(name) {
-        return this.data.get(name);
-    }
-
-    setVariable(name, value) {
-        this.data.set(name, value);
-    }
-
     getProcessInstanceId() {
         if(this.processInstanceId==null)
             this.processInstanceId = Math.floor((1 + Math.random()) * 0x10000);
@@ -43,23 +35,18 @@ var execution = new class Execution {
     }
 }();
 
-var connector = new class Connector {
-    constructor() {
-        try {
-            this.data = new Map().set('response', JSON.stringify(pm.response.json()));
-        } catch (error) {
-            this.data = new Map().set('response', JSON.stringify('invalid json'));
-        }
-    }
-
-    getVariable(name) {
-        return this.data.get(name);
-    }
-}();
-
 var payload = new class Payload {
     set(body) {
         this.body = body;
         pm.variables.set('payload', body);
     }
 }();
+
+if(pm.response){
+    try {
+        var response = JSON.stringify(pm.response.json());
+    } catch (error) {
+        var response = JSON.stringify('invalid json');
+    }
+    var statusCode = pm.response.code;
+}

@@ -45,15 +45,15 @@ eval(pm.environment.get("camunda"));
 // Connector-END
 
 // Test-Data-START • Initialise process variables, and (optionally) business key and/or process id:
-execution.setVariable("processVariableA", "Data A");
-execution.setVariable("processVariableB", "Data B");
+processVariableA = "Data A";
+processVariableB = "Data B";
 execution.setProcessBusinessKey("case-001");
 // Test-Data-END
 
 // Service-Task-Input-START • Camunda HTTP Connector Input Parameter payload Script:
 out = JSON.stringify({
-    "variableA": execution.getVariable("processVariableA"),
-    "variableB": execution.getVariable("processVariableB"),
+    "variableA": processVariableA,
+    "variableB": processVariableB,
     "businessKey": execution.getProcessBusinessKey()
 });
 // Service-Task-Input-END
@@ -69,13 +69,13 @@ eval(pm.environment.get("camunda"));
 // Connector-END
 
 // Service-Task-Output-START • Camunda HTTP Connector Output Parameter processVariableA Script:
-response = JSON.parse(connector.getVariable("response"));
-processVariableA = response.variableA;
+object = JSON.parse(response);
+processVariableA = object.variableA;
 // Service-Task-Output-END
 
 // Service-Task-Output-START • Camunda HTTP Connector Output Parameter processVariableB Script:
-response = JSON.parse(connector.getVariable("response"));
-processVariableB = response.variableB;
+object = JSON.parse(response);
+processVariableB = object.variableB;
 // Service-Task-Output-END
 
 // Test-START • Postman Test:
@@ -85,8 +85,11 @@ pm.test("Test processVariableA: " + processVariableA, function() {
 pm.test("Test processVariableB: " + processVariableB, function() {
     pm.expect(processVariableB).to.include("ECHO");
 });
-pm.test("Test businessKey: " + response.businessKey, function() {
-    pm.expect(response.businessKey).to.include("case-001");
+pm.test("Test businessKey: " + JSON.parse(response).businessKey, function() {
+    pm.expect(JSON.parse(response).businessKey).to.include("case-001");
+});
+pm.test("Test statusCode: " + statusCode, function() {
+    pm.expect(statusCode).to.be.ok;
 });
 // Test-END
 ```
