@@ -47,14 +47,14 @@ eval(pm.environment.get("camunda"));
 // Test-Data-START • Initialise process variables, and (optionally) business key and/or process id:
 processVariableA = "Data A";
 processVariableB = "Data B";
-execution.setProcessBusinessKey("case-001");
+execution.setBusinessKey("case-001");
 // Test-Data-END
 
 // Service-Task-Input-START • Camunda HTTP Connector Input Parameter payload Script:
 out = JSON.stringify({
     "variableA": processVariableA,
     "variableB": processVariableB,
-    "businessKey": execution.getProcessBusinessKey()
+    "businessKey": execution.getBusinessKey()
 });
 // Service-Task-Input-END
 
