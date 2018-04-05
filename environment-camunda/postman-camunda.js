@@ -21,13 +21,13 @@ var execution = new class Execution {
             this.processInstanceId = processInstanceId;
     }
 
-    getProcessBusinessKey() {
+    getBusinessKey() {
         if(this.processBusinessKey==null)
             this.processBusinessKey = Math.floor((1 + Math.random()) * 0x10000);
         return this.processBusinessKey;
     }
 
-    setProcessBusinessKey(processBusinessKey) {
+    setBusinessKey(processBusinessKey) {
         if(this.processBusinessKey!=null)
             console.error("Init process business key only once");
         else

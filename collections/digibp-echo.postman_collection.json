@@ -11,7 +11,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "245cff2b-00d4-4f12-85f3-0850c5110a00",
+						"id": "0cabe6c2-8b11-453f-bc4c-28a1d4e92c6d",
 						"type": "text/javascript",
 						"exec": [
 							"// Connector-START • Camunda HTTP Connector JavaScript emulation:",
@@ -21,14 +21,14 @@
 							"// Test-Data-START • Initialise process variables, and (optionally) business key and/or process id:",
 							"processVariableA = \"Data A\";",
 							"processVariableB = \"Data B\";",
-							"execution.setProcessBusinessKey(\"case-001\");",
+							"execution.setBusinessKey(\"case-001\");",
 							"// Test-Data-END",
 							"",
 							"// Service-Task-Input-START • Camunda HTTP Connector Input Parameter payload Script:",
 							"out = JSON.stringify({",
 							"    \"variableA\": processVariableA,",
 							"    \"variableB\": processVariableB,",
-							"    \"businessKey\": execution.getProcessBusinessKey()",
+							"    \"businessKey\": execution.getBusinessKey()",
 							"});",
 							"// Service-Task-Input-END",
 							"",
@@ -108,7 +108,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "fa709821-8320-4841-bedc-cc93b19e399f",
+						"id": "0bfc834a-0848-42a8-b846-1dc9f9d495d8",
 						"type": "text/javascript",
 						"exec": [
 							"// Connector-START • Camunda HTTP Connector JavaScript emulation:",
@@ -118,14 +118,14 @@
 							"// Test-Data-START • Initialise process variables, and (optionally) business key and/or process id:",
 							"processVariableA = \"Data A\";",
 							"processVariableB = \"Data B\";",
-							"execution.setProcessBusinessKey(\"case-001\");",
+							"execution.setBusinessKey(\"case-001\");",
 							"// Test-Data-END",
 							"",
 							"// Service-Task-Input-START • Camunda HTTP Connector Input Parameter payload Script:",
 							"out = JSON.stringify({",
 							"    \"variableA\": processVariableA,",
 							"    \"variableB\": processVariableB,",
-							"    \"businessKey\": execution.getProcessBusinessKey()",
+							"    \"businessKey\": execution.getBusinessKey()",
 							"});",
 							"// Service-Task-Input-END",
 							"",

@@ -1,0 +1,89 @@
+{
+	"info": {
+		"_postman_id": "053f1300-54f4-4d6e-8fb6-c07bf1b116ce",
+		"name": "digibp-getting-started",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "putsreq.com Echo POST",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "03b364e3-ba2d-4f20-961b-7483d77740fa",
+						"type": "text/javascript",
+						"exec": [
+							"// Connector-START • Camunda HTTP Connector JavaScript emulation:",
+							"eval(pm.environment.get(\"camunda\"));",
+							"// Connector-END",
+							"",
+							"// Test-Data-START • Initialise process variables, and (optionally) business key and/or process id:",
+							"",
+							"    // execution.setBusinessKey(\"case-001\");",
+							"",
+							"// Test-Data-END",
+							"",
+							"// Service-Task-Input-START • Camunda HTTP Connector Input Parameter payload Script:",
+							"out = JSON.stringify({",
+							"    // Your JSON",
+							"});",
+							"// Service-Task-Input-END",
+							"",
+							"// Body-START • Postman Body {{payload}}:",
+							"payload.set(out);",
+							"// Body-END "
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "6c0a4ac8-73b9-4704-853c-88c20054a4ca",
+						"type": "text/javascript",
+						"exec": [
+							"// Connector-START • Camunda HTTP Connector JavaScript emulation:",
+							"eval(pm.environment.get(\"camunda\"));",
+							"// Connector-END",
+							"",
+							"// Service-Task-Output-START • Camunda HTTP Connector Output Parameter Script:",
+							"    // object = JSON.parse(response);",
+							"// Service-Task-Output-END",
+							"",
+							"// Test-START • Postman Test:",
+							"    /* pm.test(\"Test processVariableA: \" + processVariable, function() {",
+							"        pm.expect(processVariable).to.include(\"TEXT\");",
+							"    }); */",
+							"// Test-END"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{payload}}"
+				},
+				"url": {
+					"raw": "https://putsreq.com/AnfG0hKuA9sNHqEIp6hf",
+					"protocol": "https",
+					"host": [
+						"putsreq",
+						"com"
+					],
+					"path": [
+						"AnfG0hKuA9sNHqEIp6hf"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
